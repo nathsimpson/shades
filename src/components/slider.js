@@ -4,7 +4,7 @@ import { getWcagColor } from "../utils";
 
 // import React from "react";
 
-const Slider = ({ label, set, colors, value, step = 1, max = 100 }) => {
+const Slider = ({ label, set, colors, base, value, step = 1, max = 100 }) => {
   return (
     <div style={{ display: "flex", marginRight: 12 }}>
       <p style={{ margin: 0 }}>{label}</p>
@@ -49,7 +49,7 @@ const Slider = ({ label, set, colors, value, step = 1, max = 100 }) => {
       />
       <p
         style={{
-          color: getWcagColor(colors[Math.round((colors.length - 1) / 2)]),
+          color: getWcagColor(base),
           margin: 0
         }}
       >

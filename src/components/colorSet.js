@@ -68,14 +68,21 @@ const ToolBar = ({
   >
     <div style={{ display: "flex" }}>
       <Slider
+        base={base}
         colors={colors}
         label="Amount"
-        value={shades}
-        set={setShades}
         max={50}
+        set={setShades}
         step={2}
+        value={shades}
       />
-      <Slider colors={colors} label="Difference" value={bound} set={setBound} />
+      <Slider
+        base={base}
+        colors={colors}
+        label="Difference"
+        set={setBound}
+        value={bound}
+      />
     </div>
 
     <div>

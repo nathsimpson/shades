@@ -32,13 +32,13 @@ const Container = ({ children }) => (
   <div
     style={{
       fontFamily: "Helvetica, sans-serif",
-      backgroundColor: "#282c34",
+      backgroundColor: "#203040",
+      color: "#e7edf3",
       minHeight: "100vh",
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
-      justifyContent: "center",
-      color: "white"
+      justifyContent: "center"
     }}
   >
     {children}
