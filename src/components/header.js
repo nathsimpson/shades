@@ -16,7 +16,12 @@ const ToolBar = ({ colors, setColors, bound, setBound }) => {
         // backgroundColor: "#fa6d01"
       }}
     >
-      <p>ColorPacks</p>
+      <p>
+        <span role="img" aria-label="Face with sunglasses">
+          😎
+        </span>{" "}
+        Shades
+      </p>
 
       <div>
         <input

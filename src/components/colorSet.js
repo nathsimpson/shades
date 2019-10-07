@@ -1,7 +1,7 @@
 import React from "react";
 import Slider from "./slider";
 
-import { generateColorPack } from "../utils";
+import { generateColorPack, getWcagColor } from "../utils";
 
 const ColorSet = ({ base }) => {
   const [shades, setShades] = React.useState(11);
@@ -30,18 +30,19 @@ const ColorSet = ({ base }) => {
           alignItems: "stretch"
         }}
       >
-        {colors.map(orange => (
-          <ColorSquare color={orange} />
+        {colors.map(shade => (
+          <ColorSquare color={shade} />
         ))}
       </div>
-      <ToolBar {...{ base, shades, setShades, bound, setBound }} />
+      <ToolBar {...{ base, colors, shades, setShades, bound, setBound }} />
     </div>
   );
 };
 
-const ToolBar = ({ base, shades, setShades, bound, setBound }) => (
+const ToolBar = ({ base, colors, shades, setShades, bound, setBound }) => (
   <div
     style={{
+      color: getWcagColor(base),
       display: "flex",
       padding: 12,
       backgroundColor: base,
@@ -50,11 +51,23 @@ const ToolBar = ({ base, shades, setShades, bound, setBound }) => (
     }}
   >
     <div style={{ display: "flex" }}>
-      <Slider name="Shades" value={shades} set={setShades} max={50} step={2} />
-      <Slider name="Bound" value={bound} set={setBound} />
+      <Slider
+        colors={colors}
+        label="Amount"
+        value={shades}
+        set={setShades}
+        max={50}
+        step={2}
+      />
+      <Slider colors={colors} label="Difference" value={bound} set={setBound} />
     </div>
 
-    <button>Copy JSON</button>
+    <div>
+      <span>{`Darkest: ${colors[0]}`}</span>{" "}
+      <span>{`Lightest: ${colors[colors.length - 1]}`} </span>{" "}
+      <button>Copy JSON</button>
+      <button>Delete</button>
+    </div>
   </div>
 );
 

@@ -5,13 +5,6 @@ export const hexToHSL = input => {
   return formatted;
 };
 
-export const rgbToHSL = input => {
-  const rgbMap = rgbToRgbMap(input);
-  const hsl = rgbMapToHslMap(rgbMap);
-  const formatted = formatHSL(hsl);
-  return formatted;
-};
-
 export const hexToRgbMap = input => {
   let inputColor = input.replace("#", "").toLowerCase();
   let rgb;
@@ -35,16 +28,24 @@ export const hexToRgbMap = input => {
   return rgb;
 };
 
-export const rgbToRgbMap = input => {
-  // rgb(12,34,56)
-
-  const rgbMap = input
+export const rgbToRgbMap = input =>
+  input
     .toLowerCase()
     .replace("rgb(", "")
     .replace(")", "")
     .split(",");
 
-  return rgbMap;
+const formatHex = ({ R, G, B }) => {
+  var r = R.toString(16);
+  var g = G.toString(16);
+  var b = B.toString(16);
+
+  // ensure all three channels have two characters
+  r = r.length === 1 ? "0" + r : r;
+  g = g.length === 1 ? "0" + g : g;
+  b = b.length === 1 ? "0" + b : b;
+
+  return `#${r + g + b}`;
 };
 
 export const rgbMapToHslMap = input => {
@@ -108,6 +109,38 @@ export const rgbMapToHslMap = input => {
   };
 };
 
+const hslMapToRgbMap = ({ H, S, L }) => {
+  var r, g, b;
+  const h = H / 360;
+  const s = S / 100;
+  const l = L / 100;
+
+  if (s === 0) {
+    r = g = b = l; // achromatic
+  } else {
+    function hue2rgb(p, q, t) {
+      if (t < 0) t += 1;
+      if (t > 1) t -= 1;
+      if (t < 1 / 6) return p + (q - p) * 6 * t;
+      if (t < 1 / 2) return q;
+      if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
+      return p;
+    }
+
+    var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+    var p = 2 * l - q;
+    r = hue2rgb(p, q, h + 1 / 3);
+    g = hue2rgb(p, q, h);
+    b = hue2rgb(p, q, h - 1 / 3);
+  }
+
+  return {
+    R: Math.round(r * 255),
+    G: Math.round(g * 255),
+    B: Math.round(b * 255)
+  };
+};
+
 export const formatHSL = ({ H, S, L }) => `hsl(${H}, ${S}%, ${L}%)`;
 
 export const generateColorPack = (inputColor, shades, bound) => {
@@ -125,8 +158,27 @@ export const generateColorPack = (inputColor, shades, bound) => {
       S: inputColorMap.S,
       L: Math.round(min + delta * i)
     };
-    pack.push(formatHSL(color));
+
+    if (color.L >= 0 && color.L <= 100) {
+      // pack.push(formatHSL(color));
+      pack.push(formatHex(hslMapToRgbMap(color)));
+    }
   }
 
   return pack;
+};
+
+export const getWcagColor = color => {
+  const map = hexToRgbMap(color);
+
+  const R = map.R / 255;
+  const G = map.G / 255;
+  const B = map.B / 255;
+
+  const Rg = R <= 10 ? R / 3294 : (R / 269 + 0.0513) ^ 2.4;
+  const Gg = G <= 10 ? G / 3294 : (G / 269 + 0.0513) ^ 2.4;
+  const Bg = B <= 10 ? B / 3294 : (B / 269 + 0.0513) ^ 2.4;
+  // why 100000? no idea, but it seems to work
+  const L = (0.2126 * Rg + 0.7152 * Gg + 0.0722 * Bg) * 100000;
+  return L > 10.5 ? "black" : "white";
 };
