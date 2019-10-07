@@ -3,11 +3,16 @@ import Slider from "./slider";
 
 import { generateColorPack, getWcagColor } from "../utils";
 
-const ColorSet = ({ base }) => {
+const ColorSet = ({ base, setColors, colors: rootColors }) => {
   const [shades, setShades] = React.useState(11);
   const [bound, setBound] = React.useState(10);
 
   const colors = generateColorPack(base, shades, bound);
+
+  const removeColor = () => {
+    const newColors = rootColors.filter(col => col !== base);
+    return setColors(newColors);
+  };
 
   return (
     <div
@@ -34,12 +39,23 @@ const ColorSet = ({ base }) => {
           <ColorSquare color={shade} />
         ))}
       </div>
-      <ToolBar {...{ base, colors, shades, setShades, bound, setBound }} />
+      <ToolBar
+        onDelete={removeColor}
+        {...{ base, colors, shades, setShades, bound, setBound }}
+      />
     </div>
   );
 };
 
-const ToolBar = ({ base, colors, shades, setShades, bound, setBound }) => (
+const ToolBar = ({
+  base,
+  colors,
+  shades,
+  setShades,
+  bound,
+  setBound,
+  onDelete
+}) => (
   <div
     style={{
       color: getWcagColor(base),
@@ -63,10 +79,24 @@ const ToolBar = ({ base, colors, shades, setShades, bound, setBound }) => (
     </div>
 
     <div>
-      <span>{`Darkest: ${colors[0]}`}</span>{" "}
-      <span>{`Lightest: ${colors[colors.length - 1]}`} </span>{" "}
+      <span
+        style={{
+          padding: 4,
+          backgroundColor: colors[0],
+          color: getWcagColor(colors[0])
+        }}
+      >{`Darkest: ${colors[0]}`}</span>{" "}
+      <span
+        style={{
+          padding: 4,
+          backgroundColor: colors[colors.length - 1],
+          color: getWcagColor(colors[colors.length - 1])
+        }}
+      >
+        {`Lightest: ${colors[colors.length - 1]}`}{" "}
+      </span>{" "}
       <button>Copy JSON</button>
-      <button>Delete</button>
+      <button onClick={onDelete}>Delete</button>
     </div>
   </div>
 );

@@ -4,11 +4,11 @@ import Header from "./components/header";
 import ColorSet from "./components/colorSet";
 
 const App = () => {
-  const [colors, setColors] = React.useState(["#fa6d01", "#203040", "#aaaa00"]);
+  const [colors, setColors] = React.useState(["#fa6d01", "#203040"]);
 
   return (
     <Container>
-      <Header colors={colors} setColors={setColors} />
+      <Header {...{ colors, setColors }} />
       <div
         style={{
           display: "flex",
@@ -19,7 +19,7 @@ const App = () => {
         }}
       >
         {colors.map(color => (
-          <ColorSet base={color} />
+          <ColorSet base={color} {...{ colors, setColors }} />
         ))}
       </div>
 
