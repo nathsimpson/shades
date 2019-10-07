@@ -1,4 +1,5 @@
 import React from "react";
+import AddColor from "./addColor";
 
 const ToolBar = ({ colors, setColors, bound, setBound }) => {
   const [newColor, setNewColor] = React.useState("#ff0000");
@@ -23,22 +24,7 @@ const ToolBar = ({ colors, setColors, bound, setBound }) => {
         Shades
       </p>
 
-      <div>
-        <input
-          type="color"
-          placeholder="Add Color"
-          value={newColor}
-          onChange={({ target: { value: newColor } }) => setNewColor(newColor)}
-        />
-        <button
-          onClick={() => {
-            console.log(newColor);
-            return setColors(colors.concat([newColor]));
-          }}
-        >
-          Add!
-        </button>
-      </div>
+      <AddColor {...{ setColors, colors, setNewColor, newColor }} />
     </div>
   );
 };
