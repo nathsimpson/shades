@@ -143,7 +143,7 @@ const hslMapToRgbMap = ({ H, S, L }) => {
 
 export const formatHSL = ({ H, S, L }) => `hsl(${H}, ${S}%, ${L}%)`;
 
-export const generateColorPack = (inputColor, shades, bound) => {
+export const generateShades = (inputColor, shades, bound) => {
   const rgbMap = hexToRgbMap(inputColor);
   const inputColorMap = rgbMapToHslMap(rgbMap);
 

@@ -7,7 +7,18 @@ const App = () => {
   const [colors, setColors] = React.useState(["#fa6d01", "#203040"]);
 
   return (
-    <Container>
+    <div
+      style={{
+        fontFamily: "Helvetica, sans-serif",
+        backgroundColor: "#203040",
+        color: "#e7edf3",
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center"
+      }}
+    >
       <Header {...{ colors, setColors }} />
       <div
         style={{
@@ -24,25 +35,8 @@ const App = () => {
       </div>
 
       {/* <p style={{ fontSize: 12 }}>{JSON.stringify({ ...oranges })}</p> */}
-    </Container>
+    </div>
   );
 };
-
-const Container = ({ children }) => (
-  <div
-    style={{
-      fontFamily: "Helvetica, sans-serif",
-      backgroundColor: "#203040",
-      color: "#e7edf3",
-      minHeight: "100vh",
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center"
-    }}
-  >
-    {children}
-  </div>
-);
 
 export default App;

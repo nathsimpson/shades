@@ -36,6 +36,7 @@ const ToolBar = ({ colors, setColors, bound, setBound }) => {
           <a
             css={{ color: "#5982ab", "&:hover": { color: "#fa6d01" } }}
             href="https://www.nathansimpson.design"
+            target="_blank"
           >
             Nathan Simpson
           </a>

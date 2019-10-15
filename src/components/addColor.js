@@ -1,9 +1,10 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
+import Button from "./button";
 
 const AddColor = ({ setColors, colors, newColor, setNewColor }) => (
   <div style={{ display: "flex", alignItems: "center" }}>
-    <label>Add color:</label>
+    <label>Choose color:</label>
     <input
       type="color"
       placeholder="Add Color"
@@ -40,14 +41,7 @@ const AddColor = ({ setColors, colors, newColor, setNewColor }) => (
         }
       }}
     />
-    <button
-      onClick={() => {
-        console.log(newColor);
-        return setColors(colors.concat([newColor]));
-      }}
-    >
-      Add!
-    </button>
+    <Button onClick={() => setColors(colors.concat([newColor]))} label="Add" />
   </div>
 );
 
