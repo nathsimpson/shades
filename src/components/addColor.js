@@ -3,7 +3,7 @@ import { jsx } from '@emotion/core';
 import { Button } from './button';
 
 export const AddColor = ({ setColors, colors, newColor, setNewColor }) => (
-  <div style={{ display: 'flex', alignItems: 'center' }}>
+  <div css={{ display: 'flex', alignItems: 'center' }}>
     <label>Choose color:</label>
     <input
       type="color"

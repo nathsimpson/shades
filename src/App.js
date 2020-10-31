@@ -1,14 +1,16 @@
-import React from 'react';
+/** @jsx jsx */
+import { jsx } from '@emotion/core';
+import { useState } from 'react';
 
 import Header from './components/header';
 import ColorSet from './components/colorSet';
 
 const App = () => {
-  const [colors, setColors] = React.useState(['#fa6d01', '#203040']);
+  const [colors, setColors] = useState(['#fa6d01', '#203040']);
 
   return (
     <div
-      style={{
+      css={{
         fontFamily: 'Helvetica, sans-serif',
         backgroundColor: '#203040',
         color: '#e7edf3',
@@ -21,7 +23,7 @@ const App = () => {
     >
       <Header {...{ colors, setColors }} />
       <div
-        style={{
+        css={{
           display: 'flex',
           flex: 1,
           flexDirection: 'column',
@@ -33,8 +35,6 @@ const App = () => {
           <ColorSet base={color} {...{ colors, setColors }} key={color} />
         ))}
       </div>
-
-      {/* <p style={{ fontSize: 12 }}>{JSON.stringify({ ...oranges })}</p> */}
     </div>
   );
 };

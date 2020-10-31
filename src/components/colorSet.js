@@ -1,11 +1,13 @@
-import React from 'react';
+/** @jsx jsx */
+import { jsx } from '@emotion/core';
+import { useState } from 'react';
 import Slider from './slider';
 import { Button } from './button';
 import { generateShades, getWcagColor } from '../utils';
 
 const ColorSet = ({ base, setColors, colors: rootColors }) => {
-  const [shades, setShades] = React.useState(11);
-  const [bound, setBound] = React.useState(10);
+  const [shades, setShades] = useState(11);
+  const [bound, setBound] = useState(10);
 
   const colors = generateShades(base, shades, bound);
 
@@ -17,22 +19,20 @@ const ColorSet = ({ base, setColors, colors: rootColors }) => {
 
   return (
     <div
-      style={{
+      css={{
         display: 'flex',
         flex: 1,
         width: '100%',
         flexDirection: 'column',
-        // flexWrap: "wrap",
         alignItems: 'stretch'
       }}
     >
       <div
-        style={{
+        css={{
           display: 'flex',
           flex: 1,
           width: '100%',
           flexDirection: 'row',
-          // flexWrap: "wrap",
           alignItems: 'stretch'
         }}
       >
@@ -58,7 +58,7 @@ const ToolBar = ({
   onDelete
 }) => {
   const inputId = `text-${base}`;
-  const [copyButtonLabel, setCopyButtonLabel] = React.useState('Copy shades');
+  const [copyButtonLabel, setCopyButtonLabel] = useState('Copy shades');
 
   const onCopy = () => {
     const copyText = document.getElementById(inputId);
@@ -71,7 +71,7 @@ const ToolBar = ({
 
   return (
     <div
-      style={{
+      css={{
         color: getWcagColor(base),
         display: 'flex',
         padding: 12,
@@ -80,7 +80,7 @@ const ToolBar = ({
         justifyContent: 'space-between'
       }}
     >
-      <div style={{ display: 'flex' }}>
+      <div css={{ display: 'flex' }}>
         <Slider
           base={base}
           colors={colors}
@@ -102,14 +102,14 @@ const ToolBar = ({
       <div>
         <input value={colors} id={inputId} />
         <span
-          style={{
+          css={{
             padding: 4,
             backgroundColor: colors[0],
             color: getWcagColor(colors[0])
           }}
         >{`Darkest: ${colors[0]}`}</span>{' '}
         <span
-          style={{
+          css={{
             padding: 4,
             backgroundColor: colors[colors.length - 1],
             color: getWcagColor(colors[colors.length - 1])
@@ -126,7 +126,7 @@ const ToolBar = ({
 
 const ColorSquare = ({ color }) => (
   <div
-    style={{
+    css={{
       display: 'flex',
       width: '100%',
       flex: 1,

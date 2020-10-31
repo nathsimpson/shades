@@ -2,8 +2,6 @@
 import { jsx } from '@emotion/core';
 import { getWcagColor } from '../utils';
 
-// import React from "react";
-
 const Slider = ({ label, set, colors, base, value, step = 1, max = 100 }) => {
   return (
     <div css={{ display: 'flex', marginRight: 12 }}>
