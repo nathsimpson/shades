@@ -1,54 +1,47 @@
-export const hexToHSL = input => {
+export const hexToHSL = (input) => {
   const rgbMap = hexToRgbMap(input);
   const hsl = rgbMapToHslMap(rgbMap);
   const formatted = formatHSL(hsl);
   return formatted;
 };
 
-export const hexToRgbMap = input => {
-  let inputColor = input.replace("#", "").toLowerCase();
-  let rgb;
+export const hexToRgbMap = (input) => {
+  const inputColor = input.replace('#', '').toLowerCase();
 
   if (inputColor.length === 3) {
-    rgb = {
+    return {
       R: `0x${inputColor.slice(0, 1)}`,
       G: `0x${inputColor.slice(1, 2)}`,
       B: `0x${inputColor.slice(2, 3)}`
     };
   } else if (inputColor.length === 6) {
-    rgb = {
-      R: `0x${inputColor.slice(0, 2)}`, // parses hexidecimal as decimal
+    return {
+      R: `0x${inputColor.slice(0, 2)}`, // parses hexadecimal as decimal
       G: `0x${inputColor.slice(2, 4)}`,
       B: `0x${inputColor.slice(4, 6)}`
     };
   } else {
-    return new Error("whoops! Incorrect length");
+    return new Error('whoops! Incorrect length');
   }
-
-  return rgb;
 };
 
-export const rgbToRgbMap = input =>
-  input
-    .toLowerCase()
-    .replace("rgb(", "")
-    .replace(")", "")
-    .split(",");
+export const rgbToRgbMap = (input) =>
+  input.toLowerCase().replace('rgb(', '').replace(')', '').split(',');
 
 const formatHex = ({ R, G, B }) => {
-  var r = R.toString(16);
-  var g = G.toString(16);
-  var b = B.toString(16);
+  let r = R.toString(16);
+  let g = G.toString(16);
+  let b = B.toString(16);
 
   // ensure all three channels have two characters
-  r = r.length === 1 ? "0" + r : r;
-  g = g.length === 1 ? "0" + g : g;
-  b = b.length === 1 ? "0" + b : b;
+  r = r.length === 1 ? '0' + r : r;
+  g = g.length === 1 ? '0' + g : g;
+  b = b.length === 1 ? '0' + b : b;
 
   return `#${r + g + b}`;
 };
 
-export const rgbMapToHslMap = input => {
+export const rgbMapToHslMap = (input) => {
   const R = input.R / 255;
   const G = input.G / 255;
   const B = input.B / 255;
@@ -77,7 +70,7 @@ export const rgbMapToHslMap = input => {
     if (C === 0) {
       return 0;
     } else {
-      var a;
+      let a;
 
       switch (max) {
         case R:
@@ -110,25 +103,25 @@ export const rgbMapToHslMap = input => {
 };
 
 const hslMapToRgbMap = ({ H, S, L }) => {
-  var r, g, b;
+  let r, g, b;
   const h = H / 360;
   const s = S / 100;
   const l = L / 100;
 
+  function hue2rgb(p, q, t) {
+    if (t < 0) t += 1;
+    if (t > 1) t -= 1;
+    if (t < 1 / 6) return p + (q - p) * 6 * t;
+    if (t < 1 / 2) return q;
+    if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
+    return p;
+  }
+
   if (s === 0) {
     r = g = b = l; // achromatic
   } else {
-    function hue2rgb(p, q, t) {
-      if (t < 0) t += 1;
-      if (t > 1) t -= 1;
-      if (t < 1 / 6) return p + (q - p) * 6 * t;
-      if (t < 1 / 2) return q;
-      if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
-      return p;
-    }
-
-    var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
-    var p = 2 * l - q;
+    const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+    const p = 2 * l - q;
     r = hue2rgb(p, q, h + 1 / 3);
     g = hue2rgb(p, q, h);
     b = hue2rgb(p, q, h - 1 / 3);
@@ -150,9 +143,9 @@ export const generateShades = (inputColor, shades, bound) => {
   const min = parseInt(inputColorMap.L) - parseInt(bound);
   const delta = (2 * bound) / (shades - 1);
 
-  let pack = [];
+  const pack = [];
 
-  for (var i = 0; i < shades; i++) {
+  for (let i = 0; i < shades; i++) {
     const color = {
       H: inputColorMap.H,
       S: inputColorMap.S,
@@ -168,7 +161,7 @@ export const generateShades = (inputColor, shades, bound) => {
   return pack;
 };
 
-export const getWcagColor = color => {
+export const getWcagColor = (color) => {
   const map = hexToRgbMap(color);
 
   const R = map.R / 255;
@@ -180,5 +173,5 @@ export const getWcagColor = color => {
   const Bg = B <= 10 ? B / 3294 : (B / 269 + 0.0513) ^ 2.4;
   // why 100000? no idea, but it seems to work
   const L = (0.2126 * Rg + 0.7152 * Gg + 0.0722 * Bg) * 100000;
-  return L > 10.5 ? "black" : "white";
+  return L > 10.5 ? 'black' : 'white';
 };

@@ -1,6 +1,14 @@
 module.exports = {
-  extends: ['standard', 'standard-react', 'prettier', 'prettier/react'],
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'standard',
+    'standard-react',
+    'prettier',
+    'prettier/react'
+  ],
   plugins: ['prettier'],
+  parser: 'babel-eslint',
   rules: {
     'prettier/prettier': 'error',
     'react/prop-types': 0,

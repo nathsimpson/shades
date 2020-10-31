@@ -1,7 +1,7 @@
-import React from "react";
-import Slider from "./slider";
-import Button from "./button";
-import { generateShades, getWcagColor } from "../utils";
+import React from 'react';
+import Slider from './slider';
+import { Button } from './button';
+import { generateShades, getWcagColor } from '../utils';
 
 const ColorSet = ({ base, setColors, colors: rootColors }) => {
   const [shades, setShades] = React.useState(11);
@@ -9,34 +9,35 @@ const ColorSet = ({ base, setColors, colors: rootColors }) => {
 
   const colors = generateShades(base, shades, bound);
 
+  // move to app.js
   const removeColor = () => {
-    const newColors = rootColors.filter(col => col !== base);
+    const newColors = rootColors.filter((col) => col !== base);
     return setColors(newColors);
   };
 
   return (
     <div
       style={{
-        display: "flex",
+        display: 'flex',
         flex: 1,
-        width: "100%",
-        flexDirection: "column",
+        width: '100%',
+        flexDirection: 'column',
         // flexWrap: "wrap",
-        alignItems: "stretch"
+        alignItems: 'stretch'
       }}
     >
       <div
         style={{
-          display: "flex",
+          display: 'flex',
           flex: 1,
-          width: "100%",
-          flexDirection: "row",
+          width: '100%',
+          flexDirection: 'row',
           // flexWrap: "wrap",
-          alignItems: "stretch"
+          alignItems: 'stretch'
         }}
       >
-        {colors.map(shade => (
-          <ColorSquare color={shade} />
+        {colors.map((shade) => (
+          <ColorSquare color={shade} key={shade} />
         ))}
       </div>
       <ToolBar
@@ -57,29 +58,29 @@ const ToolBar = ({
   onDelete
 }) => {
   const inputId = `text-${base}`;
-  const [copyButtonLabel, setCopyButtonLabel] = React.useState("Copy shades");
+  const [copyButtonLabel, setCopyButtonLabel] = React.useState('Copy shades');
 
   const onCopy = () => {
     const copyText = document.getElementById(inputId);
     copyText.select();
-    copyText.setSelectionRange(0, 99999); /*For mobile devices*/
-    document.execCommand("copy");
-    setCopyButtonLabel("Copied!");
-    setTimeout(() => setCopyButtonLabel("Copy shades"), 1500);
+    copyText.setSelectionRange(0, 99999);
+    document.execCommand('copy');
+    setCopyButtonLabel('Copied!');
+    setTimeout(() => setCopyButtonLabel('Copy shades'), 1500);
   };
 
   return (
     <div
       style={{
         color: getWcagColor(base),
-        display: "flex",
+        display: 'flex',
         padding: 12,
         backgroundColor: base,
-        flexDirection: "row",
-        justifyContent: "space-between"
+        flexDirection: 'row',
+        justifyContent: 'space-between'
       }}
     >
-      <div style={{ display: "flex" }}>
+      <div style={{ display: 'flex' }}>
         <Slider
           base={base}
           colors={colors}
@@ -106,7 +107,7 @@ const ToolBar = ({
             backgroundColor: colors[0],
             color: getWcagColor(colors[0])
           }}
-        >{`Darkest: ${colors[0]}`}</span>{" "}
+        >{`Darkest: ${colors[0]}`}</span>{' '}
         <span
           style={{
             padding: 4,
@@ -114,8 +115,8 @@ const ToolBar = ({
             color: getWcagColor(colors[colors.length - 1])
           }}
         >
-          {`Lightest: ${colors[colors.length - 1]}`}{" "}
-        </span>{" "}
+          {`Lightest: ${colors[colors.length - 1]}`}{' '}
+        </span>{' '}
         <Button onClick={onCopy} label={copyButtonLabel} />
         <Button onClick={onDelete} label="Delete" />
       </div>
@@ -126,11 +127,9 @@ const ToolBar = ({
 const ColorSquare = ({ color }) => (
   <div
     style={{
-      display: "flex",
-      width: "100%",
+      display: 'flex',
+      width: '100%',
       flex: 1,
-      // minWidth: 60,
-      // minHeight: 60,
       backgroundColor: color
     }}
   />
