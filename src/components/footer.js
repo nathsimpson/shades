@@ -2,6 +2,16 @@
 import { jsx } from '@emotion/core';
 import { colors } from '../theme';
 
+const linkStyle = {
+  color: colors[700],
+  margin: 6,
+  textDecoration: 'none',
+  '&:hover': {
+    color: colors[800],
+    textDecoration: 'underline'
+  }
+};
+
 export const Footer = () => {
   return (
     <footer
@@ -12,34 +22,20 @@ export const Footer = () => {
         textAlign: 'center',
         width: '100%',
         boxSizing: 'border-box',
-        color: colors[500]
+        color: colors[700]
       }}
     >
       <div>
         <a
-          css={{
-            color: colors[700],
-            margin: 6,
-            textDecoration: 'none',
-            '&:hover': {
-              color: colors[800],
-              textDecoration: 'underline'
-            }
-          }}
+          css={linkStyle}
+          target="_blank"
           href="https://github.com/nathsimpson/shades/blob/master/README.md"
         >
           About Shades
         </a>
         <a
-          css={{
-            color: colors[700],
-            margin: 6,
-            textDecoration: 'none',
-            '&:hover': {
-              color: colors[800],
-              textDecoration: 'underline'
-            }
-          }}
+          css={linkStyle}
+          target="_blank"
           href="https://github.com/nathsimpson/shades"
         >
           GitHub
