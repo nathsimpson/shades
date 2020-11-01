@@ -5,7 +5,7 @@ import { colors as themeColors } from '../theme';
 
 export const AddColor = ({ setColors, colors, newColor, setNewColor }) => (
   <div css={{ display: 'flex', alignItems: 'center' }}>
-    <label css={{ color: themeColors[600], marginRight: 6 }}>Add color:</label>
+    <label css={{ color: themeColors[700], marginRight: 6 }}>Add color:</label>
 
     <input
       value={newColor}
