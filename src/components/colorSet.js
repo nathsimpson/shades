@@ -105,6 +105,7 @@ const ToolBar = ({
             width: 1
           }}
           value={colors}
+          onChange={() => {}}
           id={inputId}
         />
 
