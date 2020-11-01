@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`expects correct Hue for  1`] = `
+Array [
+  "#2e1400",
+  "#512300",
+  "#703101",
+  "#934001",
+  "#b75001",
+  "#d55d01",
+  "#f96c01",
+  "#fe8020",
+  "#fe913e",
+  "#fea662",
+  "#feba85",
+  "#ffcba4",
+  "#ffdfc7",
+]
+`;

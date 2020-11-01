@@ -1,6 +1,6 @@
-import { hexToRgbMap } from './hexToRgbMap';
-import { rgbMapToHslMap } from './rgbMapToHslMap';
-import { hslMapToRgbMap } from './hslMapToRgbMap';
+import { hexToRgbMap } from '../hexToRgbMap';
+import { rgbMapToHslMap } from '../rgbMapToHslMap';
+import { hslMapToRgbMap } from '../hslMapToRgbMap';
 
 export const generateShades = (inputColor, shades, bound) => {
   const rgbMap = hexToRgbMap(inputColor);
