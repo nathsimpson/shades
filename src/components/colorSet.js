@@ -3,7 +3,8 @@ import { jsx } from '@emotion/core';
 import { useState } from 'react';
 import Slider from './slider';
 import { Button } from './button';
-import { generateShades, getWcagColor } from '../utils';
+import { generateShades } from '../utils/generateShades';
+import { getWcagColor } from '../utils/getWcagColor';
 
 const ColorSet = ({ base, onRemoveColor, colors: rootColors }) => {
   const [shades, setShades] = useState(6);
@@ -104,6 +105,7 @@ const ToolBar = ({
             width: 1
           }}
           value={colors}
+          onChange={() => {}}
           id={inputId}
         />
 
