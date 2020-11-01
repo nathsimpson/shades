@@ -5,17 +5,11 @@ import Slider from './slider';
 import { Button } from './button';
 import { generateShades, getWcagColor } from '../utils';
 
-const ColorSet = ({ base, setColors, colors: rootColors }) => {
+const ColorSet = ({ base, onRemoveColor, colors: rootColors }) => {
   const [shades, setShades] = useState(11);
   const [bound, setBound] = useState(10);
 
   const colors = generateShades(base, shades, bound);
-
-  // move to app.js
-  const removeColor = () => {
-    const newColors = rootColors.filter((col) => col !== base);
-    return setColors(newColors);
-  };
 
   return (
     <div
@@ -33,6 +27,7 @@ const ColorSet = ({ base, setColors, colors: rootColors }) => {
           flex: 1,
           width: '100%',
           flexDirection: 'row',
+          overflow: 'scroll',
           alignItems: 'stretch'
         }}
       >
@@ -41,7 +36,7 @@ const ColorSet = ({ base, setColors, colors: rootColors }) => {
         ))}
       </div>
       <ToolBar
-        onDelete={removeColor}
+        onDelete={onRemoveColor}
         {...{ base, colors, shades, setShades, bound, setBound }}
       />
     </div>
@@ -100,23 +95,12 @@ const ToolBar = ({
       </div>
 
       <div>
-        <input value={colors} id={inputId} />
-        <span
-          css={{
-            padding: 4,
-            backgroundColor: colors[0],
-            color: getWcagColor(colors[0])
-          }}
-        >{`Darkest: ${colors[0]}`}</span>{' '}
-        <span
-          css={{
-            padding: 4,
-            backgroundColor: colors[colors.length - 1],
-            color: getWcagColor(colors[colors.length - 1])
-          }}
-        >
-          {`Lightest: ${colors[colors.length - 1]}`}{' '}
-        </span>{' '}
+        <input
+          css={{ height: 1, width: 1, border: 'none', outline: 0 }}
+          value={colors}
+          id={inputId}
+        />
+
         <Button onClick={onCopy} label={copyButtonLabel} />
         <Button onClick={onDelete} label="Delete" />
       </div>
@@ -130,9 +114,13 @@ const ColorSquare = ({ color }) => (
       display: 'flex',
       width: '100%',
       flex: 1,
+      padding: 16,
+      color: getWcagColor(color),
       backgroundColor: color
     }}
-  />
+  >
+    {color}
+  </div>
 );
 
 export default ColorSet;
