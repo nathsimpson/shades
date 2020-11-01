@@ -5,6 +5,7 @@ import Slider from './slider';
 import { Button } from './button';
 import { generateShades } from '../utils/generateShades';
 import { getWcagColor } from '../utils/getWcagColor';
+import { arrayToPalette } from '../utils/arrayToPalette';
 
 const ColorSet = ({ base, onRemoveColor, colors: rootColors }) => {
   const [shades, setShades] = useState(6);
@@ -104,7 +105,7 @@ const ToolBar = ({
             outline: 0,
             width: 1
           }}
-          value={colors}
+          value={JSON.stringify(arrayToPalette(colors))}
           onChange={() => {}}
           id={inputId}
         />
