@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
 import { colors } from '../theme';
-import { getWcagColor } from '../utils';
+import { getWcagColor } from '../utils/getWcagColor';
 import hexAlpha from 'hex-alpha';
 
 export const Button = ({ label, onClick, color }) => {
