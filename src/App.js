@@ -2,7 +2,7 @@
 import { jsx } from '@emotion/core';
 import { useState } from 'react';
 
-import Header from './components/header';
+import { Header } from './components/header';
 import { Footer } from './components/footer';
 import ColorSet from './components/colorSet';
 import { colors as themeColors } from './theme';

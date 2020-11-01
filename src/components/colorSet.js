@@ -69,13 +69,13 @@ const ToolBar = ({
       css={{
         color: getWcagColor(base),
         display: 'flex',
-        padding: 12,
+        padding: 8,
         backgroundColor: base,
         flexDirection: 'row',
         justifyContent: 'space-between'
       }}
     >
-      <div css={{ display: 'flex' }}>
+      <div css={{ display: 'flex', alignItems: 'center' }}>
         <Slider
           base={base}
           colors={colors}
@@ -96,13 +96,19 @@ const ToolBar = ({
 
       <div>
         <input
-          css={{ height: 1, width: 1, border: 'none', outline: 0 }}
+          css={{
+            backgroundColor: base,
+            border: 'none',
+            height: 1,
+            outline: 0,
+            width: 1
+          }}
           value={colors}
           id={inputId}
         />
 
-        <Button onClick={onCopy} label={copyButtonLabel} />
-        <Button onClick={onDelete} label="Delete" />
+        <Button onClick={onCopy} label={copyButtonLabel} color={colors[0]} />
+        <Button onClick={onDelete} label="Delete" color={colors[0]} />
       </div>
     </div>
   );

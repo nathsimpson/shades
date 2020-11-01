@@ -12,15 +12,19 @@ export const AddColor = ({ setColors, colors, newColor, setNewColor }) => (
       onChange={({ target: { value: newColor } }) => setNewColor(newColor)}
       placeholder="Enter a color"
       css={{
-        marginRight: 6,
+        marginRight: 3,
         paddingLeft: 12,
         background: 'none',
         outline: 'none',
-        border: `2px solid ${themeColors[600]}`,
+        border: `2px solid ${newColor || themeColors[600]}`,
         height: 24,
         color: themeColors[900],
         borderRadius: 24,
-        letterSpacing: 1
+        letterSpacing: 1,
+
+        '&:hover, &:focus': {
+          border: `2px solid ${themeColors[900]}`
+        }
       }}
     />
 
@@ -33,12 +37,12 @@ export const AddColor = ({ setColors, colors, newColor, setNewColor }) => (
         padding: 3,
         background: 'none',
         outline: 'none',
-        border: `2px solid ${themeColors[600]}`,
+        border: `2px solid ${newColor || themeColors[600]}`,
         height: 24,
         width: 24,
         borderRadius: 24,
 
-        '&:hover': {
+        '&:hover, &:focus': {
           border: `2px solid ${themeColors[900]}`
         },
 

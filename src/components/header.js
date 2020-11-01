@@ -3,7 +3,7 @@ import { jsx } from '@emotion/core';
 import { useState } from 'react';
 import { AddColor } from './addColor';
 
-const ToolBar = ({ colors, setColors, bound, setBound }) => {
+export const Header = ({ colors, setColors, bound, setBound }) => {
   const [newColor, setNewColor] = useState('#ff0000');
 
   return (
@@ -16,21 +16,32 @@ const ToolBar = ({ colors, setColors, bound, setBound }) => {
         width: '100%',
         padding: 12,
         boxSizing: 'border-box'
-        // backgroundColor: "#fa6d01"
       }}
     >
-      <h1
-        css={{
-          fontSize: 24,
-          margin: 0
-        }}
-      >
-        Shades
-      </h1>
+      <h1 css={{ fontSize: 24, margin: 0, flex: 1 }}>Shades</h1>
 
-      <AddColor {...{ setColors, colors, setNewColor, newColor }} />
+      <div css={{ display: 'flex' }}>
+        {colors.map((c) => (
+          <Dot color={c} key={c} />
+        ))}
+      </div>
+
+      <div css={{ display: 'flex', flex: 1, justifyContent: 'flex-end' }}>
+        <AddColor {...{ setColors, colors, setNewColor, newColor }} />
+      </div>
     </div>
   );
 };
 
-export default ToolBar;
+const Dot = ({ color }) => (
+  <div
+    css={{
+      height: 12,
+      width: 12,
+      marginLeft: 3,
+      marginRight: 3,
+      borderRadius: 6,
+      backgroundColor: color
+    }}
+  />
+);

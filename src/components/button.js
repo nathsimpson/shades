@@ -5,7 +5,7 @@ import { getWcagColor } from '../utils';
 import hexAlpha from 'hex-alpha';
 
 export const Button = ({ label, onClick, color }) => {
-  const primaryColor = color || colors['300'];
+  const primaryColor = color || colors['400'];
   return (
     <button
       onClick={onClick}
