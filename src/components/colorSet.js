@@ -6,8 +6,8 @@ import { Button } from './button';
 import { generateShades, getWcagColor } from '../utils';
 
 const ColorSet = ({ base, onRemoveColor, colors: rootColors }) => {
-  const [shades, setShades] = useState(11);
-  const [bound, setBound] = useState(10);
+  const [shades, setShades] = useState(6);
+  const [bound, setBound] = useState(30);
 
   const colors = generateShades(base, shades, bound);
 

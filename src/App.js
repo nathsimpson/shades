@@ -3,10 +3,12 @@ import { jsx } from '@emotion/core';
 import { useState } from 'react';
 
 import Header from './components/header';
+import { Footer } from './components/footer';
 import ColorSet from './components/colorSet';
+import { colors as themeColors } from './theme';
 
 const App = () => {
-  const [colors, setColors] = useState(['#fa6d01', '#203040', '#CFE7E1']);
+  const [colors, setColors] = useState(['#496e92', '#66b29f']);
 
   const removeColor = (currentColor) => {
     const newColors = colors.filter((color) => color !== currentColor);
@@ -17,8 +19,8 @@ const App = () => {
     <div
       css={{
         fontFamily: 'Helvetica, sans-serif',
-        backgroundColor: '#203040',
-        color: '#e7edf3',
+        backgroundColor: themeColors[200],
+        color: themeColors[900],
         minHeight: '100vh',
         display: 'flex',
         flexDirection: 'column',
@@ -45,6 +47,7 @@ const App = () => {
           />
         ))}
       </div>
+      <Footer />
     </div>
   );
 };
