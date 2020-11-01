@@ -14,7 +14,7 @@ The shades are generated in a linear progression, meaning that the 'gaps' betwee
 
 It's a relatively simple algoritm, but it is definitely not perfect. If you have more advanced needs, I highly recommend ['colorbox.io'](https://colorbox.io).
 
-There is a more detailed description of the algorithm [here](/utils/generateShades/README.md).
+There is a more detailed description of the algorithm [here](/src/utils/generateShades).
 
 ## The app
 
