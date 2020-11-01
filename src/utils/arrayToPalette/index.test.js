@@ -1,6 +1,6 @@
 const { arrayToPalette } = require('./index');
 
-test(`expects pallete to work for first item`, () => {
+test(`expects pallete JSON to be generated for 11 colors`, () => {
   expect(
     arrayToPalette([
       '#040703',
