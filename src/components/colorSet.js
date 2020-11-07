@@ -54,8 +54,12 @@ const ToolBar = ({
   setBound,
   onDelete
 }) => {
+  const defaultCopyButtonLabel = `Copy ${shades.length()} shades`;
   const inputId = `text-${base}`;
-  const [copyButtonLabel, setCopyButtonLabel] = useState('Copy shades');
+
+  const [copyButtonLabel, setCopyButtonLabel] = useState(
+    defaultCopyButtonLabel
+  );
 
   const onCopy = () => {
     const copyText = document.getElementById(inputId);
@@ -63,7 +67,7 @@ const ToolBar = ({
     copyText.setSelectionRange(0, 99999);
     document.execCommand('copy');
     setCopyButtonLabel('Copied!');
-    setTimeout(() => setCopyButtonLabel('Copy shades'), 1500);
+    setTimeout(() => setCopyButtonLabel(defaultCopyButtonLabel), 1500);
   };
 
   return (
