@@ -54,20 +54,18 @@ const ToolBar = ({
   setBound,
   onDelete
 }) => {
-  const defaultCopyButtonLabel = `Copy ${shades.length()} shades`;
+  const copyButtonLabel = `Copy ${colors.length} shades`;
   const inputId = `text-${base}`;
 
-  const [copyButtonLabel, setCopyButtonLabel] = useState(
-    defaultCopyButtonLabel
-  );
+  const [isCopied, setCopied] = useState(false);
 
   const onCopy = () => {
     const copyText = document.getElementById(inputId);
     copyText.select();
     copyText.setSelectionRange(0, 99999);
     document.execCommand('copy');
-    setCopyButtonLabel('Copied!');
-    setTimeout(() => setCopyButtonLabel(defaultCopyButtonLabel), 1500);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500);
   };
 
   return (
@@ -114,7 +112,11 @@ const ToolBar = ({
           id={inputId}
         />
 
-        <Button onClick={onCopy} label={copyButtonLabel} color={colors[0]} />
+        <Button
+          onClick={onCopy}
+          label={isCopied ? 'Copied!' : copyButtonLabel}
+          color={colors[0]}
+        />
         <Button onClick={onDelete} label="Delete" color={colors[0]} />
       </div>
     </div>
