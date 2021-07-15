@@ -10,6 +10,7 @@ module.exports = {
   plugins: ['prettier'],
   parser: 'babel-eslint',
   rules: {
+    'no-unused-vars': 'warn',
     'prettier/prettier': 'error',
     'react/prop-types': 0,
     'react/no-unused-prop-types': 0,
