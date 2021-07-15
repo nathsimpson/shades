@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { Header } from './components/header';
 import { Footer } from './components/footer';
 import { ColorSet } from './components/ColorSet';
+import { Stack } from './components/Stack';
 import { colors as themeColors } from './theme';
 
 const App = () => {
@@ -48,14 +49,16 @@ const App = () => {
           alignItems: 'stretch'
         }}
       >
-        {colors.map((color) => (
-          <ColorSet
-            base={color}
-            onRemoveColor={() => removeColor(color)}
-            {...{ colors, setColors }}
-            key={color}
-          />
-        ))}
+        <Stack gap="medium">
+          {colors.map((color) => (
+            <ColorSet
+              base={color}
+              onRemoveColor={() => removeColor(color)}
+              {...{ colors, setColors }}
+              key={color}
+            />
+          ))}
+        </Stack>
       </div>
       <Footer />
     </div>
