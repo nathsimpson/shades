@@ -4,11 +4,12 @@ import { useState } from 'react';
 
 import { Header } from './components/header';
 import { Footer } from './components/footer';
-import ColorSet from './components/colorSet';
+import { ColorSet } from './components/ColorSet';
 import { colors as themeColors } from './theme';
 
 const App = () => {
   const [colors, setColors] = useState(['#496e92', '#66b29f']);
+  const [isDark, setDark] = useState(true);
 
   const removeColor = (currentColor) => {
     const newColors = colors.filter((color) => color !== currentColor);
@@ -19,16 +20,25 @@ const App = () => {
     <div
       css={{
         fontFamily: 'Helvetica, sans-serif',
-        backgroundColor: themeColors[200],
-        color: themeColors[900],
+        backgroundColor: isDark ? themeColors.black : themeColors.white,
+        color: isDark ? themeColors.white : themeColors.black,
         minHeight: '100vh',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+
+        a: {
+          color: themeColors[700],
+          textDecoration: 'none',
+          '&:hover': {
+            color: themeColors[800],
+            textDecoration: 'underline'
+          }
+        }
       }}
     >
-      <Header {...{ colors, setColors }} />
+      <Header {...{ colors, setColors, isDark, setDark }} />
       <div
         css={{
           display: 'flex',

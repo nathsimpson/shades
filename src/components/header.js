@@ -2,8 +2,18 @@
 import { jsx } from '@emotion/core';
 import { useState } from 'react';
 import { AddColor } from './addColor';
+import { Button } from './button';
+import { colors as themeColors } from '../theme';
+import { Stack } from './Stack';
 
-export const Header = ({ colors, setColors, bound, setBound }) => {
+export const Header = ({
+  colors,
+  setColors,
+  isDark,
+  setDark,
+  bound,
+  setBound
+}) => {
   const [newColor, setNewColor] = useState('#ff0000');
 
   return (
@@ -13,35 +23,28 @@ export const Header = ({ colors, setColors, bound, setBound }) => {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
+        borderBottom: `1px solid ${themeColors[300]}`,
         width: '100%',
         padding: 12,
         boxSizing: 'border-box'
       }}
     >
-      <h1 css={{ fontSize: 24, margin: 0, flex: 1 }}>Shades</h1>
+      <Stack gap="xsmall">
+        <h1 css={{ fontSize: 24, margin: 0 }}>Shades</h1>
 
-      <div css={{ display: 'flex' }}>
-        {colors.map((c) => (
-          <Dot color={c} key={c} />
-        ))}
-      </div>
+        <span>
+          By{' '}
+          <a href="https://www.nathansimpson.design" target="_blank">
+            Nathan Simpson
+          </a>
+        </span>
+      </Stack>
 
       <div css={{ display: 'flex', flex: 1, justifyContent: 'flex-end' }}>
         <AddColor {...{ setColors, colors, setNewColor, newColor }} />
       </div>
+
+      <Button label="Toggle" onClick={() => setDark(!isDark)} />
     </div>
   );
 };
-
-const Dot = ({ color }) => (
-  <div
-    css={{
-      height: 12,
-      width: 12,
-      marginLeft: 3,
-      marginRight: 3,
-      borderRadius: 6,
-      backgroundColor: color
-    }}
-  />
-);

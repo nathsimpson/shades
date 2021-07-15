@@ -1,28 +1,44 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
-import { getWcagColor } from '../utils/getWcagColor';
+import { spacing } from '../theme';
 
 const Slider = ({ label, set, colors, base, value, step = 1, max = 100 }) => {
+  const inputId = `${base}-${label}`;
+
   return (
-    <div css={{ display: 'flex', marginRight: 12 }}>
-      <p css={{ margin: 0 }}>{label}</p>
+    <div
+      css={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: spacing.small
+      }}
+    >
+      <div
+        css={{
+          display: 'flex',
+          justifyContent: 'space-between'
+        }}
+      >
+        <label htmlFor={inputId}>{`${label}:`}</label>
+        <span>{value}</span>
+      </div>
 
       <input
         type="range"
+        id={inputId}
         name="points"
         step={step}
         min={3}
         max={max}
         value={value}
         css={{
-          '-webkit-appearance': 'none',
+          appearance: 'none',
           width: '100%',
           height: 15,
           borderRadius: 5,
           backgroundColor: colors[0],
           backgroundOpacity: 0.1,
           outline: 'none',
-          '-webkit-transition': '0.2s',
           transition: 'opacity 0.2s',
 
           '::-webkit-slider-thumb': {
@@ -45,14 +61,6 @@ const Slider = ({ label, set, colors, base, value, step = 1, max = 100 }) => {
         }}
         onChange={({ target: { value } }) => set(value)}
       />
-      <p
-        css={{
-          color: getWcagColor(base),
-          margin: 0
-        }}
-      >
-        {value}
-      </p>
     </div>
   );
 };
