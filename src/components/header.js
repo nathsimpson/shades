@@ -3,7 +3,6 @@ import { jsx } from '@emotion/core';
 import { useState } from 'react';
 import { AddColor } from './addColor';
 import { Button } from './button';
-import { colors as themeColors } from '../theme';
 import { Stack } from './Stack';
 
 export const Header = ({
@@ -23,7 +22,6 @@ export const Header = ({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        borderBottom: `1px solid ${themeColors[300]}`,
         width: '100%',
         padding: 12,
         boxSizing: 'border-box'
@@ -41,7 +39,9 @@ export const Header = ({
       </Stack>
 
       <div css={{ display: 'flex', flex: 1, justifyContent: 'flex-end' }}>
-        <AddColor {...{ setColors, colors, setNewColor, newColor }} />
+        <AddColor
+          {...{ setColors, colors, onChange: setNewColor, value: newColor }}
+        />
       </div>
 
       <Button label="Toggle" onClick={() => setDark(!isDark)} />

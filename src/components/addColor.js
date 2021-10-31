@@ -3,13 +3,13 @@ import { jsx } from '@emotion/core';
 import { Button } from './button';
 import { colors as themeColors } from '../theme';
 
-export const AddColor = ({ setColors, colors, newColor, setNewColor }) => (
+export const AddColor = ({ setColors, colors, value, onChange }) => (
   <div css={{ display: 'flex', alignItems: 'center' }}>
     <label css={{ color: themeColors[700], marginRight: 6 }}>Add color:</label>
 
     <input
-      value={newColor}
-      onChange={({ target: { value: newColor } }) => setNewColor(newColor)}
+        value={value}
+        onChange={({ target: { value: newColor } }) => onChange(newColor)}
       placeholder="Enter a color"
       css={{
         marginRight: 3,
@@ -30,8 +30,8 @@ export const AddColor = ({ setColors, colors, newColor, setNewColor }) => (
 
     <input
       type="color"
-      value={newColor}
-      onChange={({ target: { value: newColor } }) => setNewColor(newColor)}
+        value={value}
+        onChange={({ target: { value: newColor } }) => onChange(newColor)}
       css={{
         marginRight: 6,
         padding: 3,
@@ -64,6 +64,6 @@ export const AddColor = ({ setColors, colors, newColor, setNewColor }) => (
       }}
     />
 
-    <Button onClick={() => setColors(colors.concat([newColor]))} label="Add" />
+    <Button onClick={() => setColors(colors.concat([value]))} label="Add" />
   </div>
 );
