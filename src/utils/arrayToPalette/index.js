@@ -10,3 +10,7 @@ export const arrayToPalette = (array) => {
   }
   return palette;
 };
+
+export const arrayToPalette2 = (array) => {
+  return array.reduce(({ lightness, value }) => ([lightness]: value), {});
+};

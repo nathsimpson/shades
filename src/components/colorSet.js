@@ -42,8 +42,8 @@ export const ColorSet = ({ base, onRemoveColor, colors: rootColors }) => {
           alignItems: 'stretch'
         }}
       >
-        {colors.map((shade) => (
-          <ColorSquare color={shade} key={shade} />
+        {colors.map(({ value, lightness }) => (
+          <ColorSquare color={value} lightness={lightness} key={value} />
         ))}
       </div>
     </div>

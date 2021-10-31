@@ -2,24 +2,41 @@ import { hexToRgbMap } from '../hexToRgbMap';
 import { rgbMapToHslMap } from '../rgbMapToHslMap';
 import { hslMapToRgbMap } from '../hslMapToRgbMap';
 
-export const generateShades = (inputColor, shades, bound) => {
+export const generateShades = (inputColor, numberOfShades, bound) => {
   const rgbMap = hexToRgbMap(inputColor);
   const inputColorMap = rgbMapToHslMap(rgbMap);
 
   const min = parseInt(inputColorMap.L) - parseInt(bound);
-  const delta = (2 * bound) / (shades - 1);
+  const delta = (2 * bound) / (numberOfShades - 1);
 
-  const pack = [];
+  const pack = [
+    {
+      value: formatHex(
+        hslMapToRgbMap({
+          H: inputColorMap.H,
+          S: inputColorMap.S,
+          L: 5
+        })
+      ),
+      lightness: 50
+    }
+  ];
 
-  for (let i = 0; i < shades; i++) {
+  for (let i = 1; i < numberOfShades; i++) {
+    const lightness = Math.round(min + delta * i);
+    // const lightness = Math.round(i * 10);
+
     const color = {
       H: inputColorMap.H,
       S: inputColorMap.S,
-      L: Math.round(min + delta * i)
+      L: lightness
     };
 
     if (color.L >= 0 && color.L <= 100) {
-      pack.push(formatHex(hslMapToRgbMap(color)));
+      pack.push({
+        value: formatHex(hslMapToRgbMap(color)),
+        lightness: lightness * 10
+      });
     }
   }
 
