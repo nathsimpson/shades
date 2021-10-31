@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
-import { Button } from '../button';
-import { colors as themeColors } from '../../theme';
+import { Button } from './button';
+import { colors as themeColors } from '../theme';
 
 const COLOR_PICKER_SIZE = 16;
 
