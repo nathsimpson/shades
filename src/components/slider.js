@@ -32,13 +32,15 @@ const Slider = ({ label, set, colors, base, value, step = 1, max = 100 }) => {
         max={max}
         value={value}
         css={{
+          '-webkit-appearance': 'none',
           appearance: 'none',
           width: '100%',
           height: 15,
           borderRadius: 5,
-          backgroundColor: colors[0],
+          backgroundColor: colors[1].value,
           backgroundOpacity: 0.1,
           outline: 'none',
+          '-webkit-transition': '0.2s',
           transition: 'opacity 0.2s',
 
           '::-webkit-slider-thumb': {
@@ -47,7 +49,7 @@ const Slider = ({ label, set, colors, base, value, step = 1, max = 100 }) => {
             width: 25,
             height: 25,
             borderRadius: '50%',
-            background: colors[colors.length - 1],
+            background: base,
             cursor: 'pointer'
           },
 
