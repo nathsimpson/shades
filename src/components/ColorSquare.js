@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
-import { getWcagColor } from '../utils/getWcagColor';
+import { getContrastColor } from 'hex-a11y';
 
 export const ColorSquare = ({ color }) => (
   <div
@@ -9,7 +9,7 @@ export const ColorSquare = ({ color }) => (
       width: '100%',
       flex: 1,
       padding: 16,
-      color: getWcagColor(color),
+      color: getContrastColor(color),
       backgroundColor: color
     }}
   >

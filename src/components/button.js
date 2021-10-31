@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
+import { getContrastColor } from 'hex-a11y';
 import { colors } from '../theme';
-import { getWcagColor } from '../utils/getWcagColor';
 import hexAlpha from 'hex-alpha';
 
 export const Button = ({ label, onClick, color }) => {
@@ -13,7 +13,7 @@ export const Button = ({ label, onClick, color }) => {
         padding: '8px 12px',
         borderRadius: 6,
         backgroundColor: hexAlpha(primaryColor, 0.7),
-        color: getWcagColor(primaryColor),
+        color: getContrastColor(primaryColor),
         border: 'none',
         margin: '0px 2px',
 
