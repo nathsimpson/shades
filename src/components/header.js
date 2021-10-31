@@ -3,7 +3,6 @@ import { jsx } from '@emotion/core';
 import { useState } from 'react';
 import { AddColor } from './addColor';
 import { Button } from './button';
-import { Stack } from './Stack';
 
 export const Header = ({
   colors,
@@ -27,16 +26,7 @@ export const Header = ({
         boxSizing: 'border-box'
       }}
     >
-      <Stack gap="xsmall">
-        <h1 css={{ fontSize: 24, margin: 0 }}>Shades</h1>
-
-        <span>
-          By{' '}
-          <a href="https://www.nathansimpson.design" target="_blank">
-            Nathan Simpson
-          </a>
-        </span>
-      </Stack>
+      <h1 css={{ fontSize: 24, margin: 0 }}>Shades</h1>
 
       <div css={{ display: 'flex', flex: 1, justifyContent: 'flex-end' }}>
         <AddColor

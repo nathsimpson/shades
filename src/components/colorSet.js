@@ -7,7 +7,7 @@ import { ColorSquare } from './ColorSquare';
 import { ToolBar } from './Toolbar';
 
 export const ColorSet = ({ base, onRemoveColor, colors: rootColors }) => {
-  const [shades, setShades] = useState(6);
+  const [shades, setShades] = useState(10);
   const [bound, setBound] = useState(30);
 
   const colors = generateShades(base, shades, bound);
