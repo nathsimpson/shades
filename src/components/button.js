@@ -1,5 +1,5 @@
-/** @jsx jsx */
-import { jsx } from '@emotion/core';
+/** @jsxImportSource @emotion/react */
+import { jsx } from '@emotion/react';
 import { colors } from '../theme';
 import { getWcagColor } from '../utils/getWcagColor';
 import hexAlpha from 'hex-alpha';

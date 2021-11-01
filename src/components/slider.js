@@ -1,5 +1,5 @@
-/** @jsx jsx */
-import { jsx } from '@emotion/core';
+/** @jsxImportSource @emotion/react */
+import { jsx } from '@emotion/react';
 import { getWcagColor } from '../utils/getWcagColor';
 
 const Slider = ({ label, set, colors, base, value, step = 1, max = 100 }) => {
