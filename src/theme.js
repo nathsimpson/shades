@@ -1,4 +1,6 @@
 export const colors = {
+  black: '#000',
+  white: '#fff',
   100: '#090d11',
   200: '#151f29',
   300: '#2c4258',
@@ -8,4 +10,15 @@ export const colors = {
   700: '#6087af',
   800: '#e7edf3',
   900: '#ffffff'
+};
+
+export const spacing = {
+  none: 0,
+  xsmall: 4,
+  small: 8,
+  medium: 12,
+  large: 16,
+  xlarge: 24,
+  xxlarge: 32,
+  xxxlarge: 40
 };

@@ -2,16 +2,16 @@ import { hexToRgbMap } from '../hexToRgbMap';
 import { rgbMapToHslMap } from '../rgbMapToHslMap';
 import { hslMapToRgbMap } from '../hslMapToRgbMap';
 
-export const generateShades = (inputColor, shades, bound) => {
+export const generateShades = (inputColor, numberOfShades, bound) => {
   const rgbMap = hexToRgbMap(inputColor);
   const inputColorMap = rgbMapToHslMap(rgbMap);
 
   const min = parseInt(inputColorMap.L) - parseInt(bound);
-  const delta = (2 * bound) / (shades - 1);
+  const delta = (2 * bound) / (numberOfShades - 1);
 
   const pack = [];
 
-  for (let i = 0; i < shades; i++) {
+  for (let i = 0; i < numberOfShades; i++) {
     const color = {
       H: inputColorMap.H,
       S: inputColorMap.S,
