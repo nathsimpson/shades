@@ -34,7 +34,6 @@ export const ToolBar = ({
       css={{
         display: 'flex',
         width: 200,
-        // flex: 1,
         padding: 16,
         flexDirection: 'column'
       }}
