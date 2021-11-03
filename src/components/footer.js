@@ -1,16 +1,7 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
 import { colors } from '../theme';
-
-const linkStyle = {
-  color: colors[700],
-  margin: 6,
-  textDecoration: 'none',
-  '&:hover': {
-    color: colors[800],
-    textDecoration: 'underline'
-  }
-};
+import { Stack } from './Stack';
 
 export const Footer = () => {
   return (
@@ -21,26 +12,20 @@ export const Footer = () => {
         padding: 12,
         textAlign: 'center',
         width: '100%',
-        boxSizing: 'border-box',
-        color: colors[700]
+        boxSizing: 'border-box'
       }}
     >
-      <div>
+      <Stack orientation="horizontal" gap="medium">
         <a
-          css={linkStyle}
           target="_blank"
           href="https://github.com/nathsimpson/shades/blob/master/README.md"
         >
-          About Shades
+          About
         </a>
-        <a
-          css={linkStyle}
-          target="_blank"
-          href="https://github.com/nathsimpson/shades"
-        >
+        <a target="_blank" href="https://github.com/nathsimpson/shades">
           GitHub
         </a>
-      </div>
+      </Stack>
 
       <span
         css={{
