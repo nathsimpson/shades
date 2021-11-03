@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import { Header } from './components/header';
 import { Footer } from './components/footer';
-import { ColorSet } from './components/ColorSet';
+import { ColorSet } from './components/colorSet';
 import { Stack } from './components/Stack';
 import { colors as themeColors } from './theme';
 
