@@ -2,18 +2,53 @@
 
 exports[`expects correct Hue for  1`] = `
 Array [
-  "#2e1400",
-  "#512300",
-  "#703101",
-  "#934001",
-  "#b75001",
-  "#d55d01",
-  "#f96c01",
-  "#fe8020",
-  "#fe913e",
-  "#fea662",
-  "#feba85",
-  "#ffcba4",
-  "#ffdfc7",
+  Object {
+    "lightness": 160,
+    "value": "#512300",
+  },
+  Object {
+    "lightness": 220,
+    "value": "#703101",
+  },
+  Object {
+    "lightness": 290,
+    "value": "#934001",
+  },
+  Object {
+    "lightness": 360,
+    "value": "#b75001",
+  },
+  Object {
+    "lightness": 420,
+    "value": "#d55d01",
+  },
+  Object {
+    "lightness": 490,
+    "value": "#f96c01",
+  },
+  Object {
+    "lightness": 560,
+    "value": "#fe8020",
+  },
+  Object {
+    "lightness": 620,
+    "value": "#fe913e",
+  },
+  Object {
+    "lightness": 690,
+    "value": "#fea662",
+  },
+  Object {
+    "lightness": 760,
+    "value": "#feba85",
+  },
+  Object {
+    "lightness": 820,
+    "value": "#ffcba4",
+  },
+  Object {
+    "lightness": 890,
+    "value": "#ffdfc7",
+  },
 ]
 `;
