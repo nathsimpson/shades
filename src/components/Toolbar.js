@@ -46,15 +46,16 @@ export const ToolBar = ({
             alignItems: 'center'
           }}
         >
-          <div
+          <span
             css={{
-              backgroundColor: base,
-              height: 32,
-              width: 32
+              color: base,
+              fontSize: '2em',
+              fontWeight: 800,
+              marginLeft: 8
             }}
-          />
-
-          <span css={{ marginLeft: 8 }}>{base}</span>
+          >
+            {base}
+          </span>
         </div>
         <Slider
           base={base}
