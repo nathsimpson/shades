@@ -8,8 +8,21 @@ export const generateShades = (inputColor, numberOfShades, bound) => {
 
   const min = parseInt(inputColorMap.L) - parseInt(bound);
   const delta = (2 * bound) / (numberOfShades - 1);
+  // const min = 0;
+  // const delta = 10;
 
   const pack = [];
+
+  // pack.push({
+  //   value: formatHex(
+  //     hslMapToRgbMap({
+  //       H: inputColorMap.H,
+  //       S: inputColorMap.S,
+  //       L: 5
+  //     })
+  //   ),
+  //   lightness: 50
+  // });
 
   for (let i = 1; i < numberOfShades; i++) {
     const lightness = Math.round(min + delta * i);
