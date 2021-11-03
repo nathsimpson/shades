@@ -13,7 +13,6 @@ export const generateShades = (inputColor, numberOfShades, bound) => {
 
   for (let i = 1; i < numberOfShades; i++) {
     const lightness = Math.round(min + delta * i);
-    // const lightness = Math.round(i * 10);
 
     const color = {
       H: inputColorMap.H,

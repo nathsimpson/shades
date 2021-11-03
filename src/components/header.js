@@ -34,7 +34,10 @@ export const Header = ({
         />
       </div>
 
-      <Button label="Toggle" onClick={() => setDark(!isDark)} />
+      <Button
+        label={!isDark ? 'Dark' : 'Light'}
+        onClick={() => setDark(!isDark)}
+      />
     </div>
   );
 };
