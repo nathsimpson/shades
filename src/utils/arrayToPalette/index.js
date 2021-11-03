@@ -3,10 +3,8 @@
  * @param {array} colors - An array of colors
  * @return {object} The generated color palette object.
  */
-export const arrayToPalette = (array) => {
-  const palette = {};
-  for (let i = 0; i < array.length; i++) {
-    palette[(i + 1) * 100] = array[i];
-  }
-  return palette;
-};
+export const arrayToPalette = (array) =>
+  array.reduce((acc, value, i) => {
+    acc[(i + 1) * 100] = value;
+    return acc;
+  }, {});
