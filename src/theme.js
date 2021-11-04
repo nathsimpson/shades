@@ -26,7 +26,7 @@ export const spacing = {
 export const themeDark = {
   color: {
     background: '#000',
-    backgroundAlt: '#223344',
+    backgroundAlt: '#222222',
     foreground: '#fff',
     action: '#009aff'
   },
@@ -36,7 +36,7 @@ export const themeDark = {
 export const themeLight = {
   color: {
     background: '#fff',
-    backgroundAlt: '#e7edf3',
+    backgroundAlt: '#e7e7e7',
     foreground: '#000',
     action: '#009aff'
   },
