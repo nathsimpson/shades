@@ -6,10 +6,11 @@ import { Header } from './components/header';
 import { Footer } from './components/footer';
 import { ColorSet } from './components/colorSet';
 import { Stack } from './components/Stack';
-import { colors as themeColors } from './theme';
+import { ThemeProvider, useTheme } from './hooks/themeContext';
 
 const App = () => {
   const [colors, setColors] = useState(['#496e92', '#66b29f']);
+  const theme = useTheme();
 
   const removeColor = (currentColor) => {
     const newColors = colors.filter((color) => color !== currentColor);
@@ -20,8 +21,8 @@ const App = () => {
     <div
       css={{
         fontFamily: 'Helvetica, sans-serif',
-        backgroundColor: themeColors[200],
-        color: themeColors[900],
+        backgroundColor: theme.color.background,
+        color: theme.color.foreground,
         minHeight: '100vh',
         display: 'flex',
         flexDirection: 'column',
@@ -29,10 +30,10 @@ const App = () => {
         justifyContent: 'center',
 
         a: {
-          color: themeColors[700],
+          color: theme.color.action,
           textDecoration: 'none',
           '&:hover': {
-            color: themeColors[800],
+            color: theme.color.action,
             textDecoration: 'underline'
           }
         }
@@ -64,4 +65,10 @@ const App = () => {
   );
 };
 
-export default App;
+const Root = () => (
+  <ThemeProvider>
+    <App />
+  </ThemeProvider>
+);
+
+export default Root;

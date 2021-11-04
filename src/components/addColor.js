@@ -1,44 +1,48 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
 import { Button } from './button';
-import { colors as themeColors } from '../theme';
+import { useTheme } from '../hooks/themeContext';
 
 const COLOR_PICKER_SIZE = 16;
 
-export const AddColor = ({ setColors, colors, value, onChange }) => (
-  <div css={{ display: 'flex', alignItems: 'center' }}>
-    <label css={{ color: themeColors[700], marginRight: 6 }}>Add color:</label>
+export const AddColor = ({ setColors, colors, value, onChange }) => {
+  const theme = useTheme();
 
-    <div
-      css={{
-        display: 'flex',
-        alignItems: 'center',
-        border: `2px solid ${value || themeColors[600]}`,
-        borderRadius: 6,
-        padding: 4,
-        color: value
-      }}
-    >
-      <input
-        value={value}
-        onChange={({ target: { value: newColor } }) => onChange(newColor)}
-        placeholder="Enter a color"
+  return (
+    <div css={{ display: 'flex', alignItems: 'center' }}>
+      <label css={{ marginRight: 6 }}>Add color:</label>
+
+      <div
         css={{
-          background: 'none',
-          outline: 'none',
-          border: 'none',
-          height: COLOR_PICKER_SIZE,
-          color: themeColors[900],
-          borderRadius: COLOR_PICKER_SIZE,
-          letterSpacing: 1
+          display: 'flex',
+          alignItems: 'center',
+          border: `2px solid ${value || theme.color.backgroundAlt}`,
+          borderRadius: 6,
+          padding: 4,
+          color: value
         }}
-      />
-      <ColorInput value={value} onChange={(newColor) => onChange(newColor)} />
-    </div>
+      >
+        <input
+          value={value}
+          onChange={({ target: { value: newColor } }) => onChange(newColor)}
+          placeholder="Enter a color"
+          css={{
+            background: 'none',
+            outline: 'none',
+            border: 'none',
+            height: COLOR_PICKER_SIZE,
+            color: theme.color.foreground,
+            borderRadius: COLOR_PICKER_SIZE,
+            letterSpacing: 1
+          }}
+        />
+        <ColorInput value={value} onChange={(newColor) => onChange(newColor)} />
+      </div>
 
-    <Button onClick={() => setColors(colors.concat([value]))} label="Add" />
-  </div>
-);
+      <Button onClick={() => setColors(colors.concat([value]))} label="Add" />
+    </div>
+  );
+};
 
 const ColorInput = ({ value, onChange }) => {
   return (

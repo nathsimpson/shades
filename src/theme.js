@@ -22,3 +22,23 @@ export const spacing = {
   xxlarge: 32,
   xxxlarge: 40
 };
+
+export const themeDark = {
+  color: {
+    background: '#000',
+    backgroundAlt: '#222222',
+    foreground: '#fff',
+    action: '#009aff'
+  },
+  spacing
+};
+
+export const themeLight = {
+  color: {
+    background: '#fff',
+    backgroundAlt: '#e7e7e7',
+    foreground: '#000',
+    action: '#009aff'
+  },
+  spacing
+};
