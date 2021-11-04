@@ -2,9 +2,12 @@
 import { jsx } from '@emotion/core';
 import { useState } from 'react';
 import { AddColor } from './addColor';
+import { Button } from './button';
+import { useThemeContext } from '../hooks/themeContext';
 
 export const Header = ({ colors, setColors, bound, setBound }) => {
   const [newColor, setNewColor] = useState('#ff0000');
+  const { themeName, onThemeChange } = useThemeContext();
 
   return (
     <div
@@ -25,6 +28,13 @@ export const Header = ({ colors, setColors, bound, setBound }) => {
           {...{ setColors, colors, onChange: setNewColor, value: newColor }}
         />
       </div>
+
+      <Button
+        label={themeName === 'light' ? 'Dark' : 'Light'}
+        onClick={() => {
+          onThemeChange(themeName === 'light' ? 'dark' : 'light');
+        }}
+      />
     </div>
   );
 };

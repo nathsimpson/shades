@@ -1,8 +1,9 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
-import { spacing } from '../theme';
+import { useTheme } from '../hooks/themeContext';
 
-const Slider = ({ label, set, colors, base, value, step = 1, max = 100 }) => {
+const Slider = ({ label, set, base, value, step = 1, max = 100 }) => {
+  const { spacing, color } = useTheme();
   const inputId = `${base}-${label}`;
 
   return (
@@ -37,7 +38,7 @@ const Slider = ({ label, set, colors, base, value, step = 1, max = 100 }) => {
           width: '100%',
           height: 15,
           borderRadius: 5,
-          backgroundColor: colors[2],
+          backgroundColor: color.backgroundAlt,
           backgroundOpacity: 0.1,
           outline: 'none',
           WebkitTransition: '0.2s',
