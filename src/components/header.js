@@ -1,11 +1,10 @@
-/** @jsx jsx */
-import { jsx } from '@emotion/core';
+/** @jsxImportSource @emotion/react */
 import { useState } from 'react';
 import { AddColor } from './addColor';
 import { Button } from './button';
 import { useThemeContext } from '../hooks/themeContext';
 
-export const Header = ({ colors, setColors, bound, setBound }) => {
+export const Header = ({ colors, setColors }) => {
   const [newColor, setNewColor] = useState('#ff0000');
   const { themeName, onThemeChange } = useThemeContext();
 

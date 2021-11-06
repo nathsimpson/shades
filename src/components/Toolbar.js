@@ -1,5 +1,4 @@
-/** @jsx jsx */
-import { jsx } from '@emotion/core';
+/** @jsxImportSource @emotion/react */
 import { useState } from 'react';
 import Slider from './slider';
 import { Button } from './button';

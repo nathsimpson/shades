@@ -1,12 +1,11 @@
-/** @jsx jsx */
-import { jsx } from '@emotion/core';
+/** @jsxImportSource @emotion/react */
 import { useState } from 'react';
 import { generateShades } from '../utils/generateShades';
 
 import { ColorSquare } from './ColorSquare';
 import { ToolBar } from './Toolbar';
 
-export const ColorSet = ({ base, onRemoveColor, colors: rootColors }) => {
+export const ColorSet = ({ base, onRemoveColor }) => {
   const [shades, setShades] = useState(10);
   const [bound, setBound] = useState(30);
 

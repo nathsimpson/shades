@@ -1,26 +1,22 @@
 module.exports = {
-  extends: [
-    'eslint:recommended',
-    'plugin:react/recommended',
-    'standard',
-    'standard-react',
-    'prettier',
-    'prettier/react'
-  ],
-  plugins: ['prettier'],
+  extends: ['eslint:recommended', 'plugin:react/recommended', 'prettier'],
+  plugins: ['react', '@emotion', 'prettier'],
   parser: 'babel-eslint',
   rules: {
     'prettier/prettier': 'error',
     'react/prop-types': 0,
-    'react/no-unused-prop-types': 0,
-    'standard/computed-property-even-spacing': 0,
-    'no-template-curly-in-string': 0,
-    camelcase: 0,
-    'import/no-duplicates': 0,
-    'react/jsx-no-target-blank': 0
+    'react/react-in-jsx-scope': 'off',
+    'no-unused-vars': [
+      'error',
+      {
+        argsIgnorePattern: '_'
+      }
+    ]
   },
   env: {
-    browser: true
+    browser: true,
+    es6: true,
+    node: true
   },
   overrides: [
     {
@@ -29,5 +25,14 @@ module.exports = {
         jest: true
       }
     }
-  ]
+  ],
+  parserOptions: {
+    ecmaVersion: 2018,
+    sourceType: 'module'
+  },
+  settings: {
+    react: {
+      version: 'detect'
+    }
+  }
 };

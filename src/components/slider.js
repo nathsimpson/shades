@@ -1,5 +1,4 @@
-/** @jsx jsx */
-import { jsx } from '@emotion/core';
+/** @jsxImportSource @emotion/react */
 import { useTheme } from '../hooks/themeContext';
 
 const Slider = ({ label, set, base, value, step = 1, max = 100 }) => {

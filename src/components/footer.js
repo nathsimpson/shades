@@ -1,5 +1,4 @@
-/** @jsx jsx */
-import { jsx } from '@emotion/core';
+/** @jsxImportSource @emotion/react */
 import { colors } from '../theme';
 import { Stack } from './Stack';
 
@@ -19,10 +18,15 @@ export const Footer = () => {
         <a
           target="_blank"
           href="https://github.com/nathsimpson/shades/blob/master/README.md"
+          rel="noreferrer"
         >
           About
         </a>
-        <a target="_blank" href="https://github.com/nathsimpson/shades">
+        <a
+          target="_blank"
+          href="https://github.com/nathsimpson/shades"
+          rel="noreferrer"
+        >
           GitHub
         </a>
       </Stack>
@@ -37,6 +41,7 @@ export const Footer = () => {
           css={{ color: colors[700], '&:hover': { color: '#fa6d01' } }}
           href="https://www.nathansimpson.design"
           target="_blank"
+          rel="noreferrer"
         >
           Nathan Simpson
         </a>
