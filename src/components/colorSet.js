@@ -17,6 +17,7 @@ export const ColorSet = ({ base, onRemoveColor }) => {
         display: 'flex',
         flex: 1,
         width: '100%',
+        overflowX: 'scroll',
         alignItems: 'stretch'
       }}
     >
@@ -37,7 +38,7 @@ export const ColorSet = ({ base, onRemoveColor }) => {
           flex: 1,
           width: '100%',
           flexDirection: 'row',
-          overflow: 'scroll',
+          overflowX: 'scroll',
           alignItems: 'stretch'
         }}
       >
