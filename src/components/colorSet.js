@@ -6,10 +6,10 @@ import { ColorSquare } from './ColorSquare';
 import { ToolBar } from './Toolbar';
 
 export const ColorSet = ({ base, onRemoveColor }) => {
-  const [shades, setShades] = useState(10);
+  const [numberOfShades, setNumberOfShades] = useState(10);
   const [bound, setBound] = useState(30);
 
-  const colors = generateShades(base, shades, bound);
+  const colors = generateShades(base, numberOfShades, bound);
 
   return (
     <div
@@ -25,8 +25,8 @@ export const ColorSet = ({ base, onRemoveColor }) => {
         {...{
           base,
           colors,
-          shades,
-          setShades,
+          numberOfShades,
+          setNumberOfShades,
           bound,
           setBound,
           onDelete: onRemoveColor

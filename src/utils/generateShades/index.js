@@ -12,14 +12,18 @@ export const generateShades = (inputColor, numberOfShades, bound) => {
   const pack = [];
 
   for (let i = 0; i < numberOfShades; i++) {
-    const color = {
-      H: inputColorMap.H,
-      S: inputColorMap.S,
-      L: Math.round(min + delta * i)
-    };
+    const lightness = Math.round(min + delta * i);
 
-    if (color.L >= 0 && color.L <= 100) {
-      pack.push(formatHex(hslMapToRgbMap(color)));
+    if (lightness >= 0 && lightness <= 100) {
+      pack.push(
+        formatHex(
+          hslMapToRgbMap({
+            H: inputColorMap.H,
+            S: inputColorMap.S,
+            L: lightness
+          })
+        )
+      );
     }
   }
 

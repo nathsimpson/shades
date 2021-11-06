@@ -8,8 +8,8 @@ import { arrayToPalette } from '../utils/arrayToPalette';
 export const ToolBar = ({
   base,
   colors,
-  shades,
-  setShades,
+  numberOfShades,
+  setNumberOfShades,
   bound,
   setBound,
   onDelete
@@ -60,9 +60,9 @@ export const ToolBar = ({
           colors={colors}
           label="Shades"
           max={50}
-          set={setShades}
+          set={setNumberOfShades}
           step={2}
-          value={shades}
+          value={numberOfShades}
         />
         <Slider
           base={base}
