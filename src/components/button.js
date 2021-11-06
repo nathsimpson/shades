@@ -1,5 +1,4 @@
-/** @jsx jsx */
-import { jsx } from '@emotion/core';
+/** @jsxImportSource @emotion/react */
 import { getContrastColor } from 'hex-a11y';
 import { colors } from '../theme';
 import hexAlpha from 'hex-alpha';
