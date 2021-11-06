@@ -2,13 +2,14 @@
 import { useState } from 'react';
 
 import { Header } from './components/header';
-import { Footer } from './components/footer';
 import { ColorSet } from './components/colorSet';
+import { AddColor } from './components/addColor';
 import { Stack } from './components/Stack';
 import { ThemeProvider, useTheme } from './hooks/themeContext';
 
 const App = () => {
   const [colors, setColors] = useState(['#496e92', '#66b29f']);
+  const [newColor, setNewColor] = useState('#ff0000');
   const theme = useTheme();
 
   const removeColor = (currentColor) => {
@@ -58,8 +59,10 @@ const App = () => {
             />
           ))}
         </Stack>
+        <AddColor
+          {...{ setColors, colors, onChange: setNewColor, value: newColor }}
+        />
       </div>
-      <Footer />
     </div>
   );
 };

@@ -1,23 +1,24 @@
 /** @jsxImportSource @emotion/react */
 import { getContrastColor } from 'hex-a11y';
-import { colors } from '../theme';
+import { useTheme } from '../hooks/themeContext';
 import hexAlpha from 'hex-alpha';
 
 export const Button = ({ label, onClick, color }) => {
-  const primaryColor = color || colors['400'];
+  const theme = useTheme();
+  const primaryColor = color || theme.color.action;
   return (
     <button
       onClick={onClick}
       css={{
-        padding: '8px 12px',
+        padding: '8px 16px',
         borderRadius: 6,
-        backgroundColor: hexAlpha(primaryColor, 0.7),
+        backgroundColor: primaryColor,
         color: getContrastColor(primaryColor),
         border: 'none',
         margin: '0px 2px',
 
         '&:hover': {
-          backgroundColor: primaryColor
+          backgroundColor: hexAlpha(primaryColor, 0.7)
         }
 
         // '&:focus': { outline: 'none' }

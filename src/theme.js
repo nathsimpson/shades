@@ -28,7 +28,7 @@ export const themeDark = {
     background: '#000',
     backgroundAlt: '#222222',
     foreground: '#fff',
-    action: '#009aff'
+    action: '#0f3fff'
   },
   spacing
 };
@@ -38,7 +38,7 @@ export const themeLight = {
     background: '#fff',
     backgroundAlt: '#e7e7e7',
     foreground: '#000',
-    action: '#009aff'
+    action: '#0f3fff'
   },
   spacing
 };
