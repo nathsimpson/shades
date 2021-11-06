@@ -5511,7 +5511,7 @@ hex-a11y@^1.0.2:
   resolved "https://registry.yarnpkg.com/hex-a11y/-/hex-a11y-1.0.2.tgz#d379e22ceb56b00e43a9ba8b6acc3339eee4c1e1"
   integrity sha512-M5ez7G+ebutJXr6aYoEzjM5RKbWJJmpxjgvw34Tai9k3robs9B1BfIJBPrAzzPD9eb2bGJ5qNSUcAyVs1T6XzQ==
 
-hex-alpha@^1.0.2:
+hex-alpha@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/hex-alpha/-/hex-alpha-1.3.0.tgz#4659a4b6d3a12f9f839217b40ecf81c6108d1fa8"
   integrity sha512-c4JlnuK9Y41iB4z8l6SsMGhcXAYBJGwGCxTLqR7llZbwPwXzxWXc+9UTydYDmma8ZQsVc6ZM57tcKeAYj99IIQ==
