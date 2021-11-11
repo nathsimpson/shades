@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { Button } from './button';
 import { useTheme } from '../hooks/themeContext';
+import { ColorSliders } from './colorSliders';
 
 const COLOR_PICKER_SIZE = 16;
 
@@ -47,6 +48,8 @@ export const AddColor = ({ setColors, colors, value, onChange }) => {
         />
         <ColorInput value={value} onChange={(newColor) => onChange(newColor)} />
       </div>
+
+      <ColorSliders value={value} onChange={(newColor) => onChange(newColor)} />
 
       <Button
         color={value}
