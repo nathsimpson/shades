@@ -46,10 +46,10 @@ export const AddColor = ({ setColors, colors, value, onChange }) => {
             letterSpacing: 1
           }}
         />
-        <ColorInput value={value} onChange={(newColor) => onChange(newColor)} />
+        <ColorInput value={value} onChange={onChange} />
       </div>
 
-      <ColorSliders value={value} onChange={(newColor) => onChange(newColor)} />
+      <ColorSliders value={value} onChange={onChange} />
 
       <Button
         color={value}
