@@ -1,36 +1,47 @@
 /** @jsxImportSource @emotion/react */
-import { useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import tinycolor from 'tinycolor2';
 import { getContrastColor } from 'hex-a11y';
 import { hslMapToHex } from './utils';
 
 export const SLpicker = ({ value, onValueChange }) => {
   const ref = useRef();
+  const [isMouseClicked, setMouseClicked] = useState(false);
   const size = 300;
 
   /** Derive new hsl values from current mouse position */
-  const onChange = (event) => {
-    const x = event.offsetX;
-    const y = event.offsetY;
+  const onChange = useCallback(
+    (event) => {
+      const x = event.offsetX;
+      const y = event.offsetY;
 
-    const input = {
-      s: (x / size) * 100 /* A number from 0-100 */,
-      v: ((size - y) / size) * 100 /* A number from 0-100 */
-    };
+      const input = {
+        s: (x / size) * 100 /* A number from 0-100 */,
+        v: ((size - y) / size) * 100 /* A number from 0-100 */
+      };
 
-    onValueChange({
-      // h: value.h,
-      s: input.s,
-      v: input.v
-    });
-  };
+      if (isMouseClicked) {
+        onValueChange({
+          // h: value.h,
+          s: input.s,
+          v: input.v
+        });
+      }
+    },
+    [isMouseClicked, event]
+  );
 
   useEffect(() => {
-    ref.current.addEventListener('mouseup', onChange);
+    ref.current.addEventListener('mousedown', () => setMouseClicked(true));
+    ref.current.addEventListener('mouseup', () => setMouseClicked(false));
+    ref.current.addEventListener('mousemove', onChange);
+
     return () => {
-      ref.current.removeEventListener('mouseup', onChange);
+      ref.current.removeEventListener('mousedown', () => {});
+      ref.current.removeEventListener('mouseup', () => {});
+      ref.current.removeEventListener('mousemove', () => {});
     };
-  }, [value]);
+  }, []);
 
   return (
     <div
