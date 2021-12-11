@@ -14,7 +14,7 @@ export const Footer = () => {
         boxSizing: 'border-box'
       }}
     >
-      <Stack orientation="horizontal" gap="medium">
+      <Stack orientation="horizontal" align="centre" gap="medium">
         <a
           target="_blank"
           href="https://github.com/nathsimpson/shades/blob/master/README.md"

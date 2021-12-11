@@ -1,8 +1,8 @@
-export const hslMapToRgbMap = ({ H, S, L }) => {
+export const hslMapToRgbMap = (input) => {
   let r, g, b;
-  const h = H / 360;
-  const s = S / 100;
-  const l = L / 100;
+  const h = input.h / 360;
+  const s = input.s / 100;
+  const l = input.l / 100;
 
   function hue2rgb(p, q, t) {
     if (t < 0) t += 1;

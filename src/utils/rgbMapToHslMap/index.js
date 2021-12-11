@@ -53,8 +53,8 @@ export const rgbMapToHslMap = (input) => {
   })();
 
   return {
-    H: Math.round(H),
-    S: Math.round(S * 100),
-    L: Math.round(L * 100)
+    h: Math.round(H),
+    s: Math.round(S * 100),
+    l: Math.round(L * 100)
   };
 };

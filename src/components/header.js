@@ -1,11 +1,8 @@
 /** @jsxImportSource @emotion/react */
-import { useState } from 'react';
-import { AddColor } from './addColor';
 import { Button } from './button';
 import { useThemeContext } from '../hooks/themeContext';
 
-export const Header = ({ colors, setColors }) => {
-  const [newColor, setNewColor] = useState('#ff0000');
+export const Header = () => {
   const { themeName, onThemeChange } = useThemeContext();
 
   return (
@@ -20,14 +17,30 @@ export const Header = ({ colors, setColors }) => {
         boxSizing: 'border-box'
       }}
     >
-      <h1 css={{ fontSize: 24, margin: 0 }}>Shades</h1>
-
-      <div css={{ display: 'flex', flex: 1, justifyContent: 'flex-end' }}>
-        <AddColor
-          {...{ setColors, colors, onChange: setNewColor, value: newColor }}
-        />
+      <div
+        css={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: 12
+        }}
+      >
+        <h1 css={{ fontSize: 24, margin: 0 }}>Shades</h1>
+        <a
+          target="_blank"
+          href="https://github.com/nathsimpson/shades/blob/master/README.md"
+          rel="noreferrer"
+        >
+          About
+        </a>
+        <a
+          target="_blank"
+          href="https://github.com/nathsimpson/shades"
+          rel="noreferrer"
+        >
+          GitHub
+        </a>
       </div>
-
       <Button
         label={themeName === 'light' ? 'Dark' : 'Light'}
         onClick={() => {

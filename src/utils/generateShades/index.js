@@ -6,7 +6,7 @@ export const generateShades = (inputColor, numberOfShades, bound) => {
   const rgbMap = hexToRgbMap(inputColor);
   const inputColorMap = rgbMapToHslMap(rgbMap);
 
-  const min = parseInt(inputColorMap.L) - parseInt(bound);
+  const min = parseInt(inputColorMap.l) - parseInt(bound);
   const delta = (2 * bound) / (numberOfShades - 1);
 
   const pack = [];
@@ -18,9 +18,9 @@ export const generateShades = (inputColor, numberOfShades, bound) => {
       pack.push(
         formatHex(
           hslMapToRgbMap({
-            H: inputColorMap.H,
-            S: inputColorMap.S,
-            L: lightness
+            h: inputColorMap.h,
+            s: inputColorMap.s,
+            l: lightness
           })
         )
       );

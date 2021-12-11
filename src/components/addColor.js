@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { Button } from './button';
 import { useTheme } from '../hooks/themeContext';
+import { ColorSliders } from './colorSliders';
 
 const COLOR_PICKER_SIZE = 16;
 
@@ -8,7 +9,17 @@ export const AddColor = ({ setColors, colors, value, onChange }) => {
   const theme = useTheme();
 
   return (
-    <div css={{ display: 'flex', alignItems: 'center' }}>
+    <div
+      css={{
+        display: 'flex',
+        marginTop: theme.spacing.xxxlarge,
+        marginBottom: theme.spacing.xxxlarge,
+        gap: theme.spacing.small,
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '100%'
+      }}
+    >
       <label css={{ marginRight: 6 }}>Add color:</label>
 
       <div
@@ -35,10 +46,16 @@ export const AddColor = ({ setColors, colors, value, onChange }) => {
             letterSpacing: 1
           }}
         />
-        <ColorInput value={value} onChange={(newColor) => onChange(newColor)} />
+        <ColorInput value={value} onChange={onChange} />
       </div>
 
-      <Button onClick={() => setColors(colors.concat([value]))} label="Add" />
+      <ColorSliders value={value} onChange={onChange} />
+
+      <Button
+        color={value}
+        onClick={() => setColors(colors.concat([value]))}
+        label="Add"
+      />
     </div>
   );
 };

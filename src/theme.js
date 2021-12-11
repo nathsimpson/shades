@@ -17,10 +17,10 @@ export const spacing = {
   xsmall: 4,
   small: 8,
   medium: 12,
-  large: 16,
-  xlarge: 24,
-  xxlarge: 32,
-  xxxlarge: 40
+  large: 20,
+  xlarge: 32,
+  xxlarge: 52,
+  xxxlarge: 84
 };
 
 export const themeDark = {
@@ -28,7 +28,7 @@ export const themeDark = {
     background: '#000',
     backgroundAlt: '#222222',
     foreground: '#fff',
-    action: '#009aff'
+    action: '#0f3fff'
   },
   spacing
 };
@@ -38,7 +38,7 @@ export const themeLight = {
     background: '#fff',
     backgroundAlt: '#e7e7e7',
     foreground: '#000',
-    action: '#009aff'
+    action: '#0f3fff'
   },
   spacing
 };
