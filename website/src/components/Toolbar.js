@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Slider from './slider';
 import { Button } from './button';
 import { Stack } from './Stack';
-import { arrayToPalette } from '../utils/arrayToPalette';
+import { arrayToPalette } from '@nathsimpson/generate-shades/lib/arrayToPalette';
 
 export const ToolBar = ({
   base,

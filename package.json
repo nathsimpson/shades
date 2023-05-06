@@ -1,36 +1,23 @@
 {
-  "name": "shades",
+  "name": "@nathsimpson/shades-monorepo",
   "version": "1.0.0",
   "private": true,
-  "dependencies": {
-    "@emotion/react": "^11.5.0",
-    "hex-a11y": "^1.0.2",
-    "hex-alpha": "^1.3.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "^4.0.3"
-  },
+  "workspaces": [
+    "packages/*",
+    "website"
+  ],
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "format": "prettier --write \"**/*.js{,on}\" \"**/*.md\"",
-    "lint": "eslint ."
+    "test:site": "yarn workspace @nathsimpson/shades-app test",
+    "test": "jest",
+    "build:site": "yarn workspace @nathsimpson/shades-app build",
+    "dev": "yarn workspace @nathsimpson/shades-app start",
+    "build": "yarn build:site",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "format": "prettier --write \"**/*.js{,on}\" \"**/*.md{,x}\" \"**/*.ts{,x}\""
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
+  "dependencies": {
+    "@babel/core": "^7.21.8",
+    "@babel/preset-env": "^7.21.5",
     "@emotion/eslint-plugin": "^11.5.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-config-standard": "^16.0.3",
@@ -39,8 +26,9 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-react": "^7.26.1",
+    "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-standard": "^5.0.0",
+    "jest": "26.6.0",
     "prettier": "^2.4.1"
   }
 }

@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { useState } from 'react';
-import { generateShades } from '../utils/generateShades';
+import { generateShades } from '@nathsimpson/generate-shades';
 
 import { ColorSquare } from './ColorSquare';
 import { ToolBar } from './Toolbar';
