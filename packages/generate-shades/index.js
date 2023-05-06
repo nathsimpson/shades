@@ -1,0 +1,1 @@
+export { generateShades } from './generateShades';
