@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`expects correct Hue for  1`] = `
-Array [
+exports[`expects correct Hue for #fa6d01 1`] = `
+[
   "#2e1400",
   "#512300",
   "#703101",
