@@ -1,7 +1,7 @@
 module.exports = {
   extends: ['eslint:recommended', 'plugin:react/recommended', 'prettier'],
   plugins: ['react', '@emotion', 'prettier'],
-  parser: 'babel-eslint',
+  parser: '@babel/eslint-parser',
   rules: {
     'prettier/prettier': 'error',
     'react/prop-types': 0,
@@ -11,7 +11,8 @@ module.exports = {
       {
         argsIgnorePattern: '_'
       }
-    ]
+    ],
+    'react/no-unknown-property': ['error', { ignore: ['css'] }]
   },
   env: {
     browser: true,
